@@ -195,7 +195,7 @@
                              <!--button redirect goes here-->
                            
                             <div class="row">
-                                <a href="booking.html" class="button">Book Now</a>
+                                <a href="addBooking.php" class="button">Book Now</a>
                             </div>   
                         </div> 
 
