@@ -14,7 +14,7 @@
         $uname = $_POST['uname'];
         $pass = $_POST['pass'];
 
-        $sql = "SELECT * FROM tbl_user WHERE username = '$uname' AND password = '$pass'";
+        $sql = "SELECT * FROM tbl_users WHERE username = '$uname' AND pass = '$pass'";
         //prepare
         //bind
         //execute

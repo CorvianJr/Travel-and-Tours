@@ -133,11 +133,11 @@
                     $uname = $("#username").val();
                     $password = $("#password").val();
                     //$cred = Somehow has to get the userlvl
-                    $.post("login.php",{uname:$uname, pass:$password},function(data){ 
+                    $.post("login.php",{username:$uname, pass:$password},function(data){ 
                         //change $uname to userlvl, just testing
-                       if($uname == 'client'){ // if the response is client redirect to index dashboard
+                       if(data == 'client'){ // if the response is client redirect to index dashboard
                         window.location.href = "client/client.php";
-                       }else if($uname == 'admin'){  // if the response is admin redirect to admin dashboard
+                       }else if(data == 'admin'){  // if the response is admin redirect to admin dashboard
                         window.location.href = "admin/admin.php";
                        }else{ //if none then show modal alert
                         $("#error").modal("show");
