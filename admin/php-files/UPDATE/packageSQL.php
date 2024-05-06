@@ -2,25 +2,34 @@
 require_once '../../../conn.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $packCode = $_POST['packCode']; 
+    $packCode = $_POST['packCode'];
+    $packTitle = $_POST['packTitle'];
+    $route = $_POST['route'];
+    $include = $_POST['include'];
+    $exclude = $_POST['exclude'];
+
     $dayCardData = json_decode($_POST['dayData'], true);
     $priceCardData = json_decode($_POST['priceData'], true);
     $flightCardData = json_decode($_POST['flightData'], true);
+    //updates the package data
+    $stmt = $conn->prepare("UPDATE tbl_pack SET title = ?, locations = ?, inclusion = ?, exclusion = ? WHERE pack_code = ?");
+    $stmt->execute([$packTitle, $route, $include, $exclude, $packCode]);
 
     if (!empty($dayCardData) && !empty($priceCardData) && !empty($flightCardData)) {
         try {
             $conn->beginTransaction();
             
-            // Update or insert day card data
-            foreach ($dayCardData as $dayData) {
+            //Update or insert day card data
+            foreach ($dayCardData as $dayData) {//loop for going through each day card
+                //this query checks for any matching itinerary_id(primary key) from the table
                 $stmt = $conn->prepare("SELECT * FROM tbl_itinerary WHERE pack_code = ? AND itinerary_id = ?");
                 $stmt->execute([$packCode, $dayData['itinerary_id']]);
                 $dayRecord = $stmt->fetch(PDO::FETCH_ASSOC);
                 
-                if ($dayRecord) {
+                if ($dayRecord) {//this will execute if there is a matching itinerary_id in the table..
                     $stmt = $conn->prepare("UPDATE tbl_itinerary SET day = ?, meals = ?, hotel_stat = ?, hotel = ?, activity = ?, poi = ?, optional = ? WHERE pack_code = ? AND itinerary_id = ?");
                     $stmt->execute([$dayData['day'], $dayData['meals'], $dayData['hotel_stat'], $dayData['hotel'], $dayData['activity'], $dayData['poi'], $dayData['optional'], $packCode, $dayData['itinerary_id']]);
-                } else {
+                } else {//otherwise, this will insert a new record instead
                     $stmt = $conn->prepare("INSERT INTO tbl_itinerary (pack_code, day, meals, hotel_stat, hotel, activity, poi, optional) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
                     $stmt->execute([$packCode, $dayData['day'], $dayData['meals'], $dayData['hotel_stat'], $dayData['hotel'], $dayData['activity'], $dayData['poi'], $dayData['optional']]);
                 }

@@ -278,13 +278,9 @@ session_start(); // Start the session
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
 
-    
     <!--custom javaScript-->
-    <script src="js-files/addPackage-pack.js"></script><!--main JS script-->
-    <!--<script src="js-files/test.js"></script>-->
-    <script src="js-files/addForms-pack.js"></script><!--addsforms -->
-    <script src="php-files/add-tblpack.php"></script><!--add to database-->
-
+    <script src="js-files/packManage/insert.js"></script><!--main JS script-->
+    <script src="js-files/packManage/addForms.js"></script><!--adds forms -->
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
