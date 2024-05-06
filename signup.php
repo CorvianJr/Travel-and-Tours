@@ -15,8 +15,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $fname = $_POST["fname"];
     $mi = $_POST["mi"];
     $email = $_POST["email"];
+    $phone = $_POST["phone"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
+    $userlvl = "user";
 
     // Check if passwords match
     if ($password!= $confirm_password) {
@@ -38,9 +40,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert the user data into the database
-    $sql = "INSERT INTO tbl_users (username, lname, fname, mi, email, pass) VALUES ('$username', '$lname', '$fname', '$mi', '$email', '$password')";
+    $sql = "INSERT INTO tbl_users (username, lname, fname, mi, email, phone, pass, userlvl) VALUES ('$username', '$lname', '$fname', '$mi', '$email', '$phone', '$hashed_password', '$userlvl')";
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$username, $lname, $fname, $mi, $email, $hashed_password]);
+    $stmt->execute([$username, $lname, $fname, $mi, $email, $phone, $hashed_password, $userlvl]);
 
     // Check if the data was inserted successfully
     if ($stmt->rowCount() > 0) {
