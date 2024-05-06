@@ -128,8 +128,8 @@ CREATE TABLE `tbl_price` (
 
 CREATE TABLE `tbl_users` (
   `username` varchar(255) NOT NULL,
-  `lname` varchar(255) NOT NULL,
   `fname` varchar(255) NOT NULL,
+  `lname` varchar(255) NOT NULL,
   `mi` varchar(1) NOT NULL,
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
