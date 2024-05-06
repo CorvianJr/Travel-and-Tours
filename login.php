@@ -19,7 +19,7 @@ if(isset($_POST['username'])){
         }else{
             echo "client";
         }
-
+      
     }else{
         echo "error";
     }
