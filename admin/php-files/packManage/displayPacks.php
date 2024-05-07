@@ -8,7 +8,7 @@ $sql = "SELECT * FROM tbl_pack";
 // If search parameter is provided, modify the SQL query accordingly
 if(isset($_POST['search'])){
     $search = $_POST['search'];
-    $sql .= " WHERE pack_name LIKE '%$search%'";
+    $sql = " WHERE pack_name LIKE '%$search%'";
 }
 
 try {
