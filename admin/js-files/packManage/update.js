@@ -8,12 +8,6 @@ $(document).ready(function() {
             const include = $('#include').val();
             const exclude = $('#exclude').val();
             console.log(packCode);
-            console.log(packTitle);
-            console.log(route);
-            console.log(include);
-            console.log(exclude);
-
-
             var priceCardData = [];
             $('.price-card-add').each(function(index) {
                 //gets data from the form
@@ -23,8 +17,7 @@ $(document).ready(function() {
                     amount: $(this).find('#amount' + (index + 1)).val(),
                     price_desc: $(this).find('#priceDesc' + (index + 1)).val()
                 });
-            });
-            
+            });         
             var flightCardData = [];
             $('.flight-card-add').each(function(index) {   
                 flightCardData.push({
@@ -34,7 +27,6 @@ $(document).ready(function() {
                     plane: $(this).find('#plane' + (index + 1)).val()
                 });
             });
-
             var dayCardData = [];
             $('.day-card').each(function(index) {   
                 dayCardData.push({
@@ -48,18 +40,21 @@ $(document).ready(function() {
                     optional: $(this).find('#optionAct' + (index + 1)).val(),
                 });
             });
-
             // Log the data in the console
             console.log('POST Day Data:', dayCardData);
             console.log('POST Price Data:', priceCardData);    
             console.log('POST Flight Data:', flightCardData);    
 
-            // Make the AJAX request
+            //AJAX for editing
             $.ajax({
-                url: 'php-files/UPDATE/tbl_price.php',
+                url: 'php-files/UPDATE/packageSQL.php',
                 type: 'POST',
                 data: {
-                    packCode: packCode, 
+                    packCode: packCode,
+                    packTitle: packTitle,
+                    route: route,
+                    include: include,
+                    exclude: exclude,
                     priceData: JSON.stringify(priceCardData),
                     flightData: JSON.stringify(flightCardData),
                     dayData: JSON.stringify(dayCardData)
