@@ -1,15 +1,10 @@
-
 <?php
-require_once "conn.php";
+session_start(); // Add this line at the beginning of the file
 
-$conn = new mysqli($servername, $username, $password, $dbname);
+// Include the connection file
+require_once 'conn.php';
 
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Enable error reporting for PDO
-$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+// FUNCTION FOR SIGNUP
 
 // Check if form data has been submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -17,18 +12,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST["username"];
     $lname = $_POST["lname"];
     $fname = $_POST["fname"];
-    $mi = $_POST["mi"];
+    $mname = $_POST["mname"];
     $email = $_POST["email"];
     $phone = $_POST["phone"];
     $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-    $userlvl = "user";
 
-    $stmt = $conn->prepare("INSERT INTO users (username, password, email) VALUES (?, ?, ?)");
-    $stmt->bind_param("sss", $username, $password, $email);
+    // Enable error reporting for PDO
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
     // Check if passwords match
-    if ($password!= $confirm_password) {
+    if ($password != $confirm_password) {
         echo "Error: Passwords do not match.";
         exit;
     }
@@ -47,21 +41,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Insert the user data into the database
-    $sql = "INSERT INTO tbl_users (username, lname, fname, mi, email, phone, pass, userlvl) VALUES ('$username', '$lname', '$fname', '$mi', '$email', '$phone', '$hashed_password', '$userlvl')";
+    $sql = "INSERT INTO tbl_users (username, lname, fname, mi, email, phone, pass) VALUES ('$username', '$lname', '$fname', '$mname', '$email', '$phone', '$password')";
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$username, $lname, $fname, $mi, $email, $phone, $hashed_password, $userlvl]);
+    $stmt->execute([$username, $lname, $fname, $mname, $email, $phone, $hashed_password]);
 
     // Check if the data was inserted successfully
-    if ($stmt->execute() === TRUE) {
+    if ($stmt->rowCount() > 0) {
         $success_message = "User registered successfully.";
+        $_SESSION['success_message'] = $success_message; // Store the success message in the session
+        header("Location: signin.html"); // Redirect to signin.html
+        exit;
     } else {
-        $error_message = "Error: " . $stmt->error;
+        $error_message = "Error: " . $stmt->errorInfo()[2];
     }
 
+
     // Close statement
-    $stmt->close();
+    $stmt = null;
 }
 
 // Close connection
-$conn->close();
+$conn = null;
 ?>
