@@ -3,17 +3,8 @@ $(document).ready(function() {
         if (confirm("Are you sure you want to save?")) {
             const urlParams = new URLSearchParams(window.location.search);
             const packCode = urlParams.get('pack_code');
-            const packTitle = $('#packTitle').val();
-            const route = $('#route').val();
-            const include = $('#include').val();
-            const exclude = $('#exclude').val();
             console.log(packCode);
-            console.log(packTitle);
-            console.log(route);
-            console.log(include);
-            console.log(exclude);
-
-
+           
             var priceCardData = [];
             $('.price-card-add').each(function(index) {
                 //gets data from the form

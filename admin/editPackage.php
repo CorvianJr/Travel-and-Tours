@@ -303,9 +303,9 @@ if(isset($_GET['pack_code'])) {
 
     
     <!--custom javaScript-->
-    <script src="js-files/showdata.js"></script><!--displays data based on the received packcode-->
-    <script src="js-files/editForms-pack.js"></script><!--allows adding more forms-->
-    <script src="js-files/packManage/update.js"></script><!--main script that allows for updating recordst-->
+    <script src="js-files/showdata.js"></script>
+    <script src="js-files/editForms-pack.js"></script>
+    <script src="js-files/edit.js"></script>
 
 
     <!-- Template Javascript -->

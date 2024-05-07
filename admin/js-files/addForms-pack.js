@@ -17,15 +17,7 @@ $(document).ready(function(){
                 </div>
                 <div class="day-row d-flex justify-content-center mb-2">
                     <div class="form-floating col-md-4 w-25">
-                        <select type="text" class="form-select" id="meal${dayCount}" placeholder="">
-                            <option value="B/X/X" id="bOnly">B/X/X</option>
-                            <option value="X/L/X" id="lOnly">X/L/X</option>
-                            <option value="X/X/D" id="dOnly">X/X/D</option>
-                            <option value="B/L/X" id="bl">B/L/X</option>
-                            <option value="X/L/D" id="ld">X/L/D</option>
-                            <option value="B/X/D" id="bd">B/X/D</option>
-                            <option value="B/L/D" id="comp">B/L/D</option>
-                        </select>
+                        <input class="form-control" type="text" id="meal${dayCount}" maxlength=5 placeholder="">
                         <label for="meal${dayCount}">Meals (B/L/D)</label>
                     </div>
                     <div class="divider"></div>
@@ -79,12 +71,8 @@ $(document).ready(function(){
                 <div class="row">
                     <div class="mb-2">
                         <div class="form-floating">
-                            <select type="text" class="form-select" id="plane${flightCount}" placeholder="">
-                                <option value="Airplane 1" id="air1">Airplane 1</option>
-                                <option value="Airplane 2" id="air2">Airplane 2</option>
-                                <option value="Airplane 3" id="air3">Airplane 3</option>
-                            </select>
-                            <label for="plane${flightCount}">Plane</label>
+                            <input type="text" class="form-control" id="plane${flightCount}" placeholder="">
+                            <label for="plane${flightCount}">Airline Plane</label>
                         </div>
                     </div>
                 </div>
