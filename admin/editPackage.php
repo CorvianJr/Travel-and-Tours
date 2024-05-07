@@ -29,7 +29,7 @@ if(isset($_GET['pack_code'])) {
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Package Editor</title>
+    <title>Package Manager</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -303,9 +303,9 @@ if(isset($_GET['pack_code'])) {
 
     
     <!--custom javaScript-->
-    <script src="js-files/packManage/showFormData.js"></script><!--displays data based on the received packcode-->
+    <script src="js-files/showdata.js"></script><!--displays data based on the received packcode-->
     <script src="js-files/editForms-pack.js"></script><!--allows adding more forms-->
-    <script src="js-files/packManage/edit.js"></script><!--main script that allows for updating recordst-->
+    <script src="js-files/packManage/update.js"></script><!--main script that allows for updating recordst-->
 
 
     <!-- Template Javascript -->

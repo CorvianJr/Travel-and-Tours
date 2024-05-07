@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Package Manager</title>
+    <title>Package</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -228,7 +228,7 @@
     <script src="../lib/tempusdominus/js/moment-timezone.min.js"></script>
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!--Custom Javascript-->
-    <script src="js-files/packManage/view.js"></script>
+    <script src="js-files\viewPackage-pack.js"></script>
 
     
     <!-- Template Javascript -->

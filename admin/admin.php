@@ -168,7 +168,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="../index.php" class="dropdown-item">Log Out</a>
+                            <a href="nouser.html" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>
@@ -251,7 +251,21 @@
                                 <a href="#" class="button">Book Now</a>
                             </div>   
                         </div> 
-    
+                        <div class="package-card" style="background-image: url('../img/osaka.jpg')">
+                            <div class="row">
+                                <div class="title">
+                                    <p>Charming Japan</p>
+                                </div>
+                                <div class="description">
+                                    <p class="mb-2">Tokyo || Mount Fuji || Osaka</p>
+                                </div>
+                            </div>
+                             <!--Image goes here-->
+                           
+                            <div class="row">
+                                <a href="#" class="button">Book Now</a>
+                            </div>   
+                        </div> 
                     </div>  
                 </div>
             </div>

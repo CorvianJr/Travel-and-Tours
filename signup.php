@@ -1,6 +1,11 @@
 
 <?php
-require_once "conn.php";
+//FUNCTION FOR SIGNUP
+// Include the connection file
+$servername = "localhost"; // servername
+$username = "username"; //  username
+$password = "password"; //  password
+$dbname = "db_ttms"; //  database name
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 

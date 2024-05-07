@@ -1,6 +1,6 @@
 <?php
 // Include the database connection script
-require_once("../../../conn.php");
+require_once("../../conn.php");
 
 // Default SQL query to select all packages
 $sql = "SELECT * FROM tbl_pack";
