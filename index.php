@@ -68,7 +68,7 @@
                 </a>
                 <h2 class="text-primary m-2">Reinjan Travel and Tours</h3>
                 <div class="navbar-nav align-items-center ms-auto">
-                    <a href="signin.html">
+                    <a href="signin.php">
                         <button type="button" class="btn btn-outline-primary m-2" id="loginBtn">Log-In<i class="fa fa-home ms-2"></i></button>
                     </a>
                 </div>

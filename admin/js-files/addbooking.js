@@ -1,13 +1,26 @@
-//Script for adding a booking to the database
+$(document).ready(function() {
+    $("form").submit(function(event) {
+        event.preventDefault();
+        var passportID = $("#passportID").val();
+        var firstName = $("#firstName").val();
+        var lastName = $("#lastName").val();
+        var middleName = $("#middleName").val();
+        var date = $("#date").val();
+        var adultHead = $("#adultHead").val();
+        var childHead = $("#childHead").val();
+        var specialReq = $("#request").val();
 
-/*
-data to be included:
-package_id(to be retrieved from the chosen package, aka referenced and automated display)
-uname(refer to the session)
-    display lname, fname, mi based on the username(automated display)
-adult_headcount(input)
-child_headcount(input)
-flight_code(reference the available flights connected to the package_id, display to combobox as options)
-*/
+        var submit = $("#bookSubmit").val();
 
-//display the summary of the information and add a confirm message
+        $("formMassage").load("addbooking.php", {
+            passportID: passportID,
+            firstName: firstName,
+            lastName: lastName,
+            middleName: middleName,
+            date: date,
+            adultHead: adultHead,
+            childHead: childHead,
+            request: specialReq
+        });
+    })
+})
