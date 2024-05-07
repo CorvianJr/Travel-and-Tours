@@ -6,7 +6,7 @@ $(document).ready(function() {
     }
 
     $.ajax({
-        url: 'php-files/show-tblpack.php',
+        url: 'php-files/packManage/displayPacks.php',
         type: 'GET',
         success: function(data) {
             // Append the fetched HTML directly to the package-container
