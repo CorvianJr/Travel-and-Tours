@@ -64,6 +64,7 @@ $(document).ready(function() {
                     // Handle success response
                     console.log('Data saved successfully:', response);
                     alert('Data saved successfully');
+                    window.location.href = 'package.php';
                 },
                 error: function(xhr, status, error) {
                     // Handle error response
