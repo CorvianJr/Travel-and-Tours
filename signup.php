@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Insert the user data into the database
     $sql = "INSERT INTO tbl_users (username, lname, fname, mi, email, phone, pass) VALUES ('$username', '$lname', '$fname', '$mname', '$email', '$phone', '$password')";
     $stmt = $conn->prepare($sql);
-    $stmt->execute([$username, $lname, $fname, $mname, $email, $phone, $hashed_password]);
+    $stmt->execute([$username, $lname, $fname, $mname, $email, $phone, $password]);
 
     // Check if the data was inserted successfully
     if ($stmt->rowCount() > 0) {
@@ -54,7 +54,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $error_message = "Error: " . $stmt->errorInfo()[2];
     }
-
 
     // Close statement
     $stmt = null;
