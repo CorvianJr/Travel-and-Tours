@@ -76,13 +76,13 @@ $(document).ready(function() {
                 <div class="row">
                     <div class="col-md-6"> 
                         <div class="form-floating mb-2"> 
-                            <input type="text" class="form-control" id="curr${priceCount}" placeholder="" value="${currency}" readonly>
+                            <input type="text" class="form-control" id="curr${priceCount}" placeholder="" value="${currency}" disabled>
                             <label for="curr${priceCount}">Currency</label>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="form-floating mb-2"> 
-                            <input type="number" class="form-control" id="amount${priceCount}" placeholder="" value="${price}" readonly>
+                            <input type="number" class="form-control" id="amount${priceCount}" placeholder="" value="${price}" disabled>
                             <label for="amount${priceCount}">Amount</label>
                         </div>
                     </div>
@@ -90,7 +90,7 @@ $(document).ready(function() {
                 <div class="row"> 
                     <div class="col-md-12">
                         <div class="form-floating mb-2">
-                            <input type="text" class="form-control" id="priceDesc${priceCount}" placeholder="" value="${priceDesc}" readonly>
+                            <input type="text" class="form-control" id="priceDesc${priceCount}" placeholder="" value="${priceDesc}" disabled>
                             <label for="priceDesc${priceCount}">Description</label>
                         </div>
                     </div>

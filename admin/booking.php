@@ -205,7 +205,7 @@ if(isset($_GET['pack_code'])) {
                 <!--create custom class for container-->
                 <div class="booking-container"> 
                         <!--package information goes here, all info is from tbl_package-->
-                    <div class="col-md-8">
+                    <div class="col-md-6">
                         <div class="rounded h-100 mr-3">  
                             <!--displayed info here-->
                             <div class="row rounded bg-dark p-2 mb-3">
@@ -251,13 +251,30 @@ if(isset($_GET['pack_code'])) {
                             </div>                               
                         </div>                                                          
                     </div>
+                    
+                    <div class="divider m-3"></div>
 
-                    <div class="divider"></div>
-                            
+                    <!--form for itineraries goes here-->  
+                    <div class="col-md-6">
+                        <!--form for tbl_price-->
+                        <!--forms for tbl-itineraries--> 
+                        <div class="row-md-6 border-success">
+                            <div class="rounded bg-secondary mb-2 p-4">
+                                <h6>ITINERARY PLANNER</h6>
+                            </div>
+                            <div id="dayContainer">
+                                <!--day cards here-->
+                            </div>
+                            <!--button for adding a new itinerary-->
+                            <button class="rounded w-100 btn-danger mb-2" id="deleteDayCardBtn">Remove Day</button>        
+                            <button class="rounded w-100 btn-success" id="addDayBtn">Add Day</button>        
+                        </div>       
+                    </div>              
                                
                         <!--form goes here-->
-                    <div class="col-md-4">
-                                <div class="bg-secondary rounded h-100 p-4">
+              
+                </div>
+                <div class="bg-secondary rounded h-100 p-4">
                                     <h3 class="mb-4">Booking Form</h3>
                                     <div class="form-floating mb-3">
                                         <!--insert booking reference(packageID) here retrieved from the database-->
@@ -291,7 +308,7 @@ if(isset($_GET['pack_code'])) {
                                             <div class="form-floating mb-3">
                                                 <input type="email" class="form-control" id="mName"  placeholder="">
                                                 <label for="floatingInput">Middle Initial</label>
-                                            </div>
+                                            </div> 
                                         </div>
                                     </div> 
                                     <div class="form-floating mb-3">
@@ -357,9 +374,6 @@ if(isset($_GET['pack_code'])) {
                                        <button class="btn w-25 btn-success m-2" >Enter</button>
                                    </div>
                                 </div>
-                    </div>
-                </div>
-                
             </div>
             <br>
             <br>
