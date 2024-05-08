@@ -316,7 +316,6 @@
 }
 
 .package-card .row {
-    text-align: center;
     margin-bottom: 15px;
 }
 
@@ -356,7 +355,6 @@
     left: 50%; 
     transform: translateX(-50%); 
     display: inline-block;
-    text-align: center;
     width: 250px;
     padding: 10px 20px;
     background-color: #EB1616;
@@ -434,8 +432,7 @@ pre{
         margin-right: 10px;
 }
 
-.flight-box p{
-    text-align: center;
+.flight-box{
     margin-bottom: 5px;
     font-size: 14px;
     padding: 5px;

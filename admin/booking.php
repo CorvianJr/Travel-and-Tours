@@ -1,6 +1,31 @@
+<?php
+// Retrieve the pack_code from the URL
+if(isset($_GET['pack_code'])) {
+    $packCode = $_GET['pack_code'];
+
+    // Include the database connection script
+    require_once("../conn.php");
+
+    try {
+        // Prepare SQL statement to fetch package details based on pack_code
+        $stmt = $conn->prepare("SELECT * FROM tbl_pack WHERE pack_code = ?");
+        $stmt->execute([$packCode]);
+        $packageData = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        $conn = null;
+    } catch(PDOException $e) {
+        // Handle any errors
+        echo "Error: " . $e->getMessage();
+    }
+} else {
+    // Redirect to an error page or handle the case when pack_code is not provided
+    header("Location: error.php");
+    exit(); // Terminate the script execution
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <title>Reinjan Booking Form</title>
@@ -70,7 +95,7 @@
                     </div>
                 </div>
                 <!--Travel package management-->
-                <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Package Management</a>
+                <a href="package.php" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Package Management</a>
                 <!--Reports-->
                 <div class="nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="far fa-file-alt me-2"></i>Reports</a>
@@ -96,6 +121,7 @@
                 </a>
                 <h2 class="text-primary m-2">Reinjan Travel and Tours</h3>
                 <div class="navbar-nav align-items-center ms-auto">
+                   
                     <div class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
                             <i class="fa fa-envelope me-lg-2"></i>
@@ -180,136 +206,52 @@
                 <div class="booking-container"> 
                         <!--package information goes here, all info is from tbl_package-->
                     <div class="col-md-8">
-
-                            <div class="bg-secondary rounded h-100 p-4 mr-3">
-                                <h5>Package Information</h5>
-                                <div class="info-container">
-                                   
-                                    <!--values retrieved from tbl_package-->
-                                    <div class="col-md-4 mr-3 "> 
-                                        <div class="bg-dark rounded p-4">
-                                            <h6>PRICING</h6>
-                                            <div class="form-floating mb-2">    
-                                                <input type="text" class="form-control" id="floatingInput"  placeholder="" value="𝗨𝗦𝗗 𝟭𝟬𝟴𝟴/𝗣𝗔𝗫" disabled>
-                                                <label for="floatingInput">Adult & Child with bed: </label>
-                                            </div>
-                                            <div class="form-floating">
-                                                <input type="text" class="form-control" id="floatingInput"  placeholder="" value="𝗨𝗦𝗗 𝟵𝟯𝟴/𝗣𝗔𝗫" disabled>
-                                                <label for="floatingInput">Child without bed (2-5yrs old): </label>
-                                            </div>
+                        <div class="rounded h-100 mr-3">  
+                            <!--displayed info here-->
+                            <div class="row rounded bg-dark p-2 mb-3">
+                                <div class="d-flex  col-md-6 justify-content-start"><h5>Package Information</h5></div>      
+                                    <div class="d-flex flex-row w-100 mb-3 mt-3 justify-content-center">
+                                        <div class="form-floating col-md-4 w-50">
+                                            <input class="form-control" type="text" id="packTitle" placeholder=""  value="<?php echo $packageData['title']; ?>" readonly>
+                                            <label for="packTitle">Title</label>
                                         </div>
-                                        <br>
-
-                                        <div class="bg-dark rounded p-4">
-                                            <h6>TRAVEL DATES</h6>
-                                            <div class="flight-box"> 
-                                                <!--insert data from database here-->   
-                                                <p>JUL 24-29</p>
-                                                <p>AUG 28-SEP 02</p>
-                                                <p>SEP 25-30</p>
-                                                <p>OCT 16-21</p>
-                                                <p>OCT 30-NOV 04</p>
-                                                <p>OCT 31-NOV05</p>
-                                                <p>NOV 20-25 </p>
-                                                <p>NOV 27-DEC 02</p> 
-                                                <p>DEC 11-16</p>
-                                                <p>DEC 25-30</p>
-                                            </div>
-                                        
-                                            
+                                        <div class="divider"></div>
+                                        <div class="form-floating col-md-4 w-50">
+                                            <input class="form-control" type="text" id="route" placeholder=""  value="<?php echo $packageData['locations']; ?>" readonly>
+                                            <label for="route">Route (e.g., city1 > city2 > city3...)</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-8 mr-3">
-                                        <div class="bg-dark rounded  p-4">
-                                            <h6>ITINERARY</h6>
-                                             <!--make sure that the data is pulled from tbl_itinerary, data should be inside p-->
-
-                                            <div class="day-card">
-                                                <div class="day-row"><h5>Day 1</h5></div>
-                                             
-                                                <div class="day-row"> 
-                                                    <div class="day-col">
-                                                        <h6>Location: </h6><p>Manila -> Tokyo</p>
-                                                    </div>
-                                                    <div class="day-col">
-                                                        <h6>Activity: </h6><p>Travel to Tokyo</p>
-                                                    </div>
-                                                </div>
-                                               
-                                                <h6>Points of Interest: </h6>
-                                                <p>Manila > Narita International Airport</p>
-                                                <div class="day-row">
-                                                    <div class="day-col">   
-                                                        <h6>Free Time Activities: </h6><p>None</p>
-                                                    </div>
-                                                    <div class="day-col">
-                                                        <h6>Hotel: </h6><p>Hotel: 4* Hotel or similar</p> 
-                                                    </div>     
-                                                </div>
-                                                <div class="day-col">
-                                                    <h6>Meals: </h6><p>B</p>
-                                                </div>                                               
-                                            </div>
-                                            <div class="day-card">
-                                                <div class="day-row"><h5>Day 2</h5></div>
-                                                <div class="day-row"> 
-                                                    <div class="day-col">
-                                                        <h6>Location: </h6><p>Tokyo</p>
-                                                    </div>
-                                                    <div class="day-col">
-                                                        <h6>Activity: </h6><p>Visit</p>
-                                                    </div>
-            
-                                                </div>
-                                               
-                                                <h6>Points of Interest: </h6>
-                                                <p>Asakusa -> Skytree -> Shibuya Crossing -> Hachiko Statue</p>
-                                                <div class="day-row">
-                                                    <div class="day-col">   
-                                                        <h6>Free Time Activities: </h6><p>None</p>
-                                                    </div>
-                                                    <div class="day-col">
-                                                        <h6>Hotel: </h6><p>3.5* Hotel or similar</p> 
-                                                    </div>     
-                                                </div>
-                                                <div class="day-col">
-                                                    <h6>Meals: </h6><p>B</p>
-                                                </div>                                               
-                                            </div>
-                                                   <!--make sure that the data is pulled from tbl_itinerary, data should be inside p-->
-                                            <div class="day-card">
-                                                    <div class="day-row"><h5>Day 3</h5></div>
-                                                    <div class="day-row"> 
-                                                        <div class="day-col">
-                                                            <h6>Location: </h6><p>Tokyo</p>
-                                                        </div>
-                                                        <div class="day-col">
-                                                            <h6>Activity: </h6><p>Free and easy day</p>
-                                                        </div>
-                                                    </div>
-                                                   
-                                                    <h6>Points of Interest: </h6>
-                                                    <p>Disneyland or Kotoku-in Temple & Enoshima (both optional) </p>
-                                                    <div class="day-row">
-                                                        <div class="day-col">   
-                                                            <h6>Free Time Activities: </h6><p>USD 119/PAX( 1 day pass at Disneyland) || 79/PAX(Kotoku-in Temple & Enoshima )</p>
-                                                        </div>
-                                                        <div class="day-col">
-                                                            <h6>Hotel: </h6><p>3.5* Hotel or similar</p> 
-                                                        </div>     
-                                                    </div>                                               
-                                            </div>
-                                    
+                                    <div class="d-flex justify-content-center mb-2">
+                                        <div class="form-floating w-100">
+                                            <textarea class="form-control" id="include" style="height: 200px; resize: none;"readonly><?php echo $packageData['inclusion']; ?></textarea>
+                                            <label for="include">Inclusion</label>
+                                        </div>
+                                        <div class="divider"></div>
+                                        <div class="form-floating w-100">
+                                            <textarea class="form-control" id="exclude" style="height: 200px; resize: none;" readonly><?php echo $packageData['exclusion']; ?></textarea>
+                                            <label for="exclude">Exclusion</label>
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
-                                        
-                                    </div>
-                                
                                 </div>
-                                
-                            </div>                                                          
-                        </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <h5>Prices</h5>
+                                        <!--price card "spawns" here-->
+                                        <div id="priceContainer" class="row-md-6">                   
+                                        </div>
+                                    </div>
+                                    <!--forms for tbl_flight-->
+                                <div class="col-md-6 rounded">
+                                    <h5>Travel Dates</h5>
+                                    <!--flight cards "spawns" here--> 
+                                    <div class="flight-box" id="flightContainer">     
+                                    
+                                    </div> 
+                                </div>                                                       
+                            </div>                               
+                        </div>                                                          
+                    </div>
+
                     <div class="divider"></div>
                             
                                
@@ -443,39 +385,6 @@
 
 
 
-
-            <!-- update -->
-            <div class="modal modal-sheet fade p-4 py-md-5" tabindex="-1" role="dialog" id="updateUser">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content rounded-4 shadow">
-                    <div class="modal-header border-bottom-0">
-                    <h1 class="modal-title fs-5">Update User (<i id="user_id"></i>)</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form id="update_user">
-                    <div class="modal-body py-0 bg-dark">
-                        <!-- password -->
-            
-                        <br>
-                        <label for="password">Change Password</label>
-                        <input class="form-control bg-dark text-light" type="password" id="u_pass" aria-label="default input example" required>
-                        <br>
-            
-                        <input type="checkbox" onclick="revealPsw()"><b>Show Password</b>
-                    </div>
-            
-                    
-                    <div class="modal-footer bg-dark flex-column align-items-stretch w-100 gap-2 pb-3 border-top-0">
-                        <center>
-                        <button type="submit" class="btn btn-lg btn-warning">Save changes</button>
-                        <button type="button" class="btn btn-lg btn-secondary" data-bs-dismiss="modal">Close</button>
-                        </center>
-                    </div>
-                    
-            
-                    </form>
-                </div>
-                </div>
             </div>
             <!-- Footer End -->
         </div>
@@ -498,16 +407,8 @@
     <script src="../lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
-
-    <script>
-        document.getElementById("checkrequest").addEventListener("change", function() {
-            var requestField = document.getElementById("request");
-            requestField.disabled = !this.checked;
-            if (!this.checked) {
-                requestField.disabled = true;
-            }
-        });
-    </script>
+    <script src="js-files/bookManage/showInfo.js"></script>
+ 
     
 </body>
 

@@ -1,22 +1,21 @@
 $(document).ready(function() {
     // Function to handle editing a package
     function redirect(packCode) {
-        // Redirect to editPackage.php with pack_code parameter
-        window.location.href = 'editPackage.php?pack_code=' + packCode;
+        window.location.href = 'booking.php?pack_code=' + packCode;
     }
 
     $.ajax({
-        url: 'php-files/packManage/displayPacks.php',
+        url: 'php-files/bookManage/showPacks.php',
         type: 'GET',
         success: function(data) {
-            // Append the fetched HTML directly to the package-container
+            //append the fetched HTML directly to the package-container
             $('#packContainer').html(data);
             // Add click event handler for "Edit Package" buttons
-            $('.editBtn').click(function() {
+            $('.bookBtn').click(function() {
                 // Get the pack_code from the clicked button's data attribute
                 var packCode = $(this).data('pack-code');//changee pack_code to password
                 // Call editPackage function with pack_code parameter
-                editPackage(packCode);
+                redirect(packCode);
                 console.log("Pack Code:", packCode);
             });
         },

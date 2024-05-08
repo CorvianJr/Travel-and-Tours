@@ -4,12 +4,10 @@ $(document).ready(function() {
         // Redirect to editPackage.php with pack_code parameter
         window.location.href = 'editPackage.php?pack_code=' + packCode;
     }
-
     $.ajax({
         url: 'php-files/packManage/displayPacks.php',
         type: 'GET',
         success: function(data) {
-            // Append the fetched HTML directly to the package-container
             $('#packContainer').html(data);
             // Add click event handler for "Edit Package" buttons
             $('.editBtn').click(function() {

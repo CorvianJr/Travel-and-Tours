@@ -179,79 +179,9 @@
             <div class="container-fluid pt-4 px-4">
                 <div class="package-container-wrapper">
                     <!--this is where to insert the package cards-->
-                    <div class="package-container">
-                       
-                       <div class="package-card" style="background-image: url('../img/osaka.jpg')">
-                            <!--This can be used to display travel package-->  
-                            <!--package title and description-->
-                            <div class="row">
-                                <div class="title">
-                                    <p>Charming Japan</p>
-                                </div>
-                                <div class="description">
-                                    <p class="mb-2">Tokyo || Mount Fuji || Osaka</p>
-                                </div>
-                            </div>
-                             <!--button redirect goes here-->
-                           
-                            <div class="row">
-                                <a href="booking.html" class="button">Book Now</a>
-                            </div>   
-                        </div> 
-
-                        <div class="package-card" style="background-image: url('../img/SalamancaCathedral.jpg')">
-                            <!--This can be used to display travel package-->  
-                            <!--package title and description-->
-                            <div class="row">
-                                <div class="title">
-                                    <p>Memento Europa</p>
-                                </div>
-                                <div class="description">
-                                    <p class="mb-2">Portugal || Spain || Andora || Paris</p>
-                                </div>
-                            </div>
-                             <!--Image goes here-->
-                           
-                            <div class="row">
-                                <a href="#" class="button">Book Now</a>
-                            </div>   
-                        </div> 
-                        <div class="package-card" style="background-image: url('../img/hokkaido.jpg')">
-                            <!--This can be used to display travel package-->  
-                            <!--package title and description-->
-                            <div class="row">
-                                <div class="title">
-                                    <p>7D4N Hokkaido</p>
-                                </div>
-                                <div class="description">
-                                    <p class="mb-2">Tokyo || Hokkaido</p>
-                                </div>
-                            </div>
-                             <!--Image goes here-->
-                           
-                            <div class="row">
-                                <a href="#" class="button">Book Now</a>
-                            </div>   
-                        </div> 
-
-                        <div class="package-card" style="background-image: url('../img/mtfuji.jpg')">
-                            <!--This can be used to display travel package-->  
-                            <!--package title and description-->
-                            <div class="row">
-                                <div class="title">
-                                    <p>6D5N Tour Japan</p>
-                                </div>
-                                <div class="description">
-                                    <p class="mb-2">Tokyo || Mount Fuji || Osaka || USJ</p>
-                                </div>
-                            </div>
-                             <!--Image goes here-->
-                           
-                            <div class="row">
-                                <a href="#" class="button">Book Now</a>
-                            </div>   
-                        </div> 
-    
+                    <div class="package-container" id="packContainer">
+                       <!--Package card to be itierated goes here-->
+                  
                     </div>  
                 </div>
             </div>
@@ -295,6 +225,10 @@
 
     <!-- Template Javascript -->
     <script src="../js/main.js"></script>
+
+    <!--custom javascript-->
+    <script src="js-files/bookManage/show.js"></script>
+
 </body>
 
 </html>
