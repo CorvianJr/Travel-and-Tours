@@ -1,6 +1,6 @@
-<!--HTML Login Page-->
-
-
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -74,7 +74,7 @@
                             </div>      
                             <a href="">Forgot Password</a>
                         </div>
-                        <button type="submit" value="login" name="login" id="submit" class="btn btn-primary py-3 w-100 mb-4">Log In</button>
+                        <button type="button" value="login" id="loginBtn" class="btn btn-primary py-3 w-100 mb-4">Log In</button>
                         <p class="text-center mb-0">Don't have an Account? <a href="register.php">Sign Up</a></p>
                     </div>
                     
@@ -84,48 +84,9 @@
         </div>
         <!-- Sign In End -->
     </div>
-
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("#login").on('click', function () {
-                console.log('Test');
-            })
-        });
-    </script>
-
-    <script>
-        //reveal password
-        function revealPsw(){
-            var x = document.getElementById("password");
-            if(x.type === "password"){
-                x.type = "text";
-            }else{
-                x.type = "password";
-            }
-        }
-    </script>
-    
-
-          <!-- modal -->
-        <!-- failed -->
-        <div class="modal fade" role="dialog" id="error">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content rounded-4 shadow bg-danger-subtle">
-                <div class="modal-header border-bottom-0">
-                    <h1 class="modal-title fs-5 text-light">Invalid User</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body py-0">
-                    <p class="text-light">HINDI KO MAKUHA 😭</p>
-                </div>
-                </div>
-            </div>
-        </div>
-
-      
                 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js" integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         
 
     <!-- JavaScript Libraries -->
@@ -142,6 +103,7 @@
 
     <!-- Template Javascript -->
     <script src="js/main.js"></script>
+    <script src="login.js"></script>
 </body>
 
 </html>

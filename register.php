@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -52,24 +56,21 @@
                             <h3>Sign Up</h3>
                         </div>
                 <!--add script to find if there is more than 1 instances of the username-->
-                        <form action="" method="POST" class="form" id="register-form">
-                            <div class="errorLogs"></div>
                             <div class="form-floating mb-3">
                                 <input type="text" autocomplete="false" class="form-control" id="username" placeholder="">
                                 <label for="username">Username</label>
-                                <div class="validation text-left text-danger uName"></div>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="lname" name="lname" placeholder="">
-                                <label for="lname">Last Name</label>
-                            </div>
-                            <div class="form-group form-floating mb-3">
                                 <input type="text" class="form-control" id="fname" placeholder="">
                                 <label for="fname">First name</label>
                             </div>
+                            <div class="form-group form-floating mb-3">
+                                <input type="text" class="form-control" id="lname" placeholder="">
+                                <label for="lname">Last name</label>
+                            </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="mname" name="mname"placeholder="">
-                                <label for="mname">Middle name</label>
+                                <input type="text" class="form-control" id="mi" name="mname"placeholder="">
+                                <label for="mi">Middle name</label>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="email" autocomplete="false" class="form-control" id="email" placeholder="">
@@ -85,14 +86,12 @@
                             </div>
                             <div class="form-floating mb-4">
                                 <input type="password" class="form-control" id="confirm_password" placeholder="">
-                                <div class="validation text-left text-danger pwd-retype"></div>
                                 <label for="confirm_password">Confirm Password</label>
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                        
                             </div>
-                            <button type="submit" class="register btn btn-primary py-3 w-100 mb-4" id="register">Sign Up</button>
-                        </form>
+                            <button type="button" class="register btn btn-primary py-3 w-100 mb-4" id="registerBtn">Sign Up</button>
                         
                         <p class="text-center mb-0">Already have an Account? <a href="javascript:history.back()">Log In</a></p>
                     </div>
