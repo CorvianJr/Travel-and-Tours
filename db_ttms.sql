@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 28, 2024 at 06:58 AM
--- Server version: 10.4.32-MariaDB
--- PHP Version: 8.2.12
+-- Generation Time: May 11, 2024 at 01:40 PM
+-- Server version: 10.4.28-MariaDB
+-- PHP Version: 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,17 +24,20 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_book`
+-- Table structure for table `tbl_booking`
 --
 
-CREATE TABLE `tbl_book` (
-  `booking_id` int(11) NOT NULL,
-  `package_id` varchar(255) NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `passport` varchar(255) NOT NULL,
-  `adult_headcount` varchar(255) NOT NULL,
-  `child_headcount` varchar(255) NOT NULL,
-  `flight_code` varchar(255) NOT NULL,
+CREATE TABLE `tbl_booking` (
+  `booking_id` int(12) NOT NULL,
+  `package_id` varchar(34) NOT NULL,
+  `flight_code` varchar(34) NOT NULL,
+  `flight_date` varchar(11) NOT NULL,
+  `passport_id` varchar(34) NOT NULL,
+  `first_name` varchar(34) NOT NULL,
+  `last_name` varchar(34) NOT NULL,
+  `middle_name` varchar(34) NOT NULL,
+  `adult_head` varchar(34) NOT NULL,
+  `child_head` varchar(34) NOT NULL,
   `request` longtext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -134,17 +137,26 @@ CREATE TABLE `tbl_users` (
   `email` varchar(255) NOT NULL,
   `phone` varchar(255) NOT NULL,
   `pass` varchar(255) NOT NULL,
-  `userlvl` varchar(255) NOT NULL
+  `userlvl` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_users`
+--
+
+INSERT INTO `tbl_users` (`username`, `fname`, `lname`, `mi`, `email`, `phone`, `pass`, `userlvl`) VALUES
+('CorvianJr', 'Allen', 'Penaflor', 'R', 'allen@gmail.com', '09952684199', 'zxc', 'user'),
+('test', 'test', 'test', 't', 'text@mail.com', '123', '123', 'user'),
+('Traveller0221', 'Adriel', 'Peñaflor', 'R', 'adrielallenpenaflor@gmail.com', '09952684199', 'Password', 'user');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `tbl_book`
+-- Indexes for table `tbl_booking`
 --
-ALTER TABLE `tbl_book`
+ALTER TABLE `tbl_booking`
   ADD PRIMARY KEY (`booking_id`);
 
 --
@@ -182,10 +194,10 @@ ALTER TABLE `tbl_users`
 --
 
 --
--- AUTO_INCREMENT for table `tbl_book`
+-- AUTO_INCREMENT for table `tbl_booking`
 --
-ALTER TABLE `tbl_book`
-  MODIFY `booking_id` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `tbl_booking`
+  MODIFY `booking_id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `tbl_flight`

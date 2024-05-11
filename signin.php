@@ -61,7 +61,7 @@ session_start();
                                 <h3>Log In</h3>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                                <input type="text" class="form-control" id="username" placeholder="Username">
                                 <label for="username">Username</label>
                             </div>
                             <div class="form-floating mb-4">
@@ -70,7 +70,7 @@ session_start();
                             </div>
                             <div class="d-flex align-items-center justify-content-between mb-4">
                             <div>
-                            <h6 class="text-light"><input type="checkbox" onclick="revealPsw()" id="rvlpass">  Show Password</h6>
+                            <h6 class="text-light"><input type="checkbox" onclick="revealPsw()" id="rvlpass">Show Password</h6>
                             </div>      
                             <a href="">Forgot Password</a>
                         </div>

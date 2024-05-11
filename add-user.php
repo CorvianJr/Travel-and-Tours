@@ -1,7 +1,7 @@
 <?php
-require_once 'conn.php'; //Coonect to Server
+require_once 'conn.php'; //Connect to Server
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { //Connected from signup.js
     $username = $_POST['username'];
     $fname = $_POST['fname'];
     $lname = $_POST['lname'];
@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = $_POST['pass'];
     $userlvl = 'user';
 
+    //Bind and insert to tbl_users in db_ttms
     $sqlUser = "INSERT INTO tbl_users (username, fname, lname, mi, email, phone, pass, userlvl) VALUES (:username, :fname, :lname, :mi, :email, :phone, :pass, :userlvl)";
     $stmtUser = $conn->prepare($sqlUser);
     $stmtUser->bindParam(':username', $username);
@@ -28,3 +29,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "AJAX not connected";
 }
 ?>
+
+
+<!--
+TO DO:
+
+Validation
+Error Checker
+Password hashing
+
+-->

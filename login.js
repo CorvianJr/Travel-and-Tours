@@ -1,11 +1,26 @@
 $(document).ready(function() {
 
     $('#loginBtn').click(function() {
+        console.log('Login Button pressed');
 
+        const username = $('#username').val();
+        const password = $('#password').val();
 
+        $.ajax({
+            url: 'login-user.php',
+            type: "POST",
+            data: {
+                username: username,
+                pass: password
+            },
+            success: function () {
+                console.log('Successful Login');
+            }
+        });
     })
 });
 
+// Reveal Password Checkbox
 function revealPsw() {
     var x = document.getElementById("password");
     if(x.type === "password"){

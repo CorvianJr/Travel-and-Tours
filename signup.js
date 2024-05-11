@@ -12,24 +12,24 @@ $(document).ready(function() {
         const password = $('#password').val();
         const confirm_password = $('confirm_password').val();
 
-    $.ajax({
-        url: 'add-user.php',
-        type: "POST",
-        data: {
-            username: username,
-            fname: fname,
-            lname: lname,
-            mi: mi,
-            email: email,
-            phone: phone,
-            pass: password,
-            confirm_password: confirm_password
-        },
-        success: function  () {
-            console.log('Successfully registered to Database');
-        }
+        $.ajax({
+            url: 'add-user.php',
+            type: "POST",
+            data: {
+                username: username,
+                fname: fname,
+                lname: lname,
+                mi: mi,
+                email: email,
+                phone: phone,
+                pass: password,
+                confirm_password: confirm_password
+            },
+            success: function  () {
+                console.log('Successfully registered to Database');
+            }
+        });
     });
-    })
 });
 
 // FINALLY FUCKING ADDS USER TO THE DATABASE
