@@ -49,7 +49,7 @@
             </div>
             <div class="navbar-nav w-100">
                 <!--Booking-->
-                <a href="index.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Book Now</a>
+                <a href="signin.php" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>Book Now</a>
           
             </div>
         </nav>
