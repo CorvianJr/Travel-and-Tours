@@ -13,8 +13,8 @@ $(document).ready(function() {
                 username: username,
                 pass: password
             },
-            success: function () {
-                console.log('Successful Login');
+            success: function (response) {
+                window.location='client.php';
             }
         });
     })

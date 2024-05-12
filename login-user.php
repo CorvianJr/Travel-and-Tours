@@ -8,14 +8,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass = $_POST['pass'];
 
     //Check if Username match in database
-    $sqlCheck = "SELECT * FROM tbl_users WHERE username = :username";
-    $stmtCheck = $conn->prepare($sqlCheck);
-    $stmtCheck->bindParam(':username', $username);
+    $stmtCheck = $conn->prepare("SELECT * FROM tbl_users WHERE username = :username AND pass = :pass");
+    $stmtCheck->bind_param(':username',$username);
+    $stmtCheck->bind_param(':pass': $pass);
     $stmtCheck->execute();
+
+    $login=$stmtCheck->fetch();
 
     if ($sqlCheck->rowCount() >  0) {
         echo 'Username found in Database';
-        //$user = $stmtCheck->fetch();
     }
+
+    if($login != null) { //LOGIN SESSION
+        $_SESSION['username'] = $username;
+        echo 'New Username in Session';
+    } else {
+        echo 'Login Failed';
+    }
+
+
+    
 }
 ?>

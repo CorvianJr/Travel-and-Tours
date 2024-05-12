@@ -1,4 +1,6 @@
-<
+<?php
+session_start();
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -323,36 +325,36 @@
                                     <h3 class="mb-4">Booking Form</h3>
                                     <div class="form-floating mb-3">
                                         <!--insert booking reference(packageID) here retrieved from the database-->
-                                        <input type="email" class="form-control" id="bookingID"  placeholder="" value="00000001" disabled>
+                                        <input type="text" class="form-control" id="bookingID"  placeholder="" value="00000001" disabled>
                                         <label for="floatingInput">Booking reference</label>
                                     </div>
                                     <!--insert passport number-->
                                     <div class="form-floating mb-3">
-                                        <input type="email" class="form-control" id="passportID"  placeholder="">
-                                        <label for="floatingInput">Passport Number</label>
+                                        <input type="text" class="form-control" id="passportID"  placeholder="">
+                                        <label for="passportID">Passport Number</label>
                                     </div>
                                     <!--For these fields, you can automatically pull data from the database for convenience-->
                                     <div class="container-col">
                                         <!--First Name-->
                                         <div class="column">  
                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="firstName"  placeholder="">
-                                                <label for="floatingInput">First Name</label>
+                                                <input type="text" class="form-control" id="firstName" placeholder="">
+                                                <label for="firstname">First Name</label>
                                             </div>
                                         </div>
                                     
                                         <!--Last Name-->
                                         <div class="column"> 
                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="lastName"  placeholder="" value="Smith">
+                                                <input type="text" class="form-control" id="lastName"  placeholder="">
                                                 <label for="floatingInput">Last Name</label>
                                             </div>
                                         </div>
                                         <!--Mid Initial-->
                                         <div class="column"> 
                                             <div class="form-floating mb-3">
-                                                <input type="email" class="form-control" id="middleName"  placeholder="">
-                                                <label for="floatingInput">Middle Initial</label>
+                                                <input type="text" class="form-control" id="middleName"  placeholder="">
+                                                <label for="middlename">Middle Initial</label>
                                             </div>
                                         </div>
                                     </div> 
@@ -416,7 +418,7 @@
                                     
                                    <div class="button-strip">
                                        <button class="btn btn-warning m-2" id="clearBtn">Clear</button>
-                                       <button class="btn w-25 btn-success m-2" >Enter</button>
+                                       <button class="btn w-25 btn-success m-2" id="#saveBooking">Enter</button>
                                    </div>
                                 </div>
                         </form>
